@@ -1,9 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation"; // Import the useRouter hook
 import { useScroll, useTransform } from "framer-motion";
 import React from "react";
 import { GoogleGeminiEffect } from "./ui/google-gemini-effect";
 
 export function GoogleGeminiEffectDemo() {
+  const router = useRouter(); // Initialize the router
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -17,9 +19,9 @@ export function GoogleGeminiEffectDemo() {
   const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
   const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 
-  // Button click handler
+  // Button click handler to navigate to /Login
   const handleLoginClick = () => {
-    alert("Login button clicked!"); // Replace this with actual login logic
+    router.push("/Login"); // Use router.push to navigate to the Login page
   };
 
   return (
